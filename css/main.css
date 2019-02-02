@@ -1,0 +1,25 @@
+.movies ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-column-gap: 1.5em;
+    grid-row-gap: 1.5em;
+    text-align: center;
+}
+
+.thumb {
+    width: 150px;
+}
+
+.singleMovie {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+}
+
+.singleThumb {
+    width:300px; 
+    margin-left: 30%;
+}
+
+.details {
+    width: 80%;
+}
