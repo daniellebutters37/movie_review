@@ -1,12 +1,13 @@
 <?php
 require_once('scripts/config.php');
     if(empty($_POST['username']) || empty($_POST['password'])){
-        $message = 'missing fields';
+        $message = 'Please fill in username and password to continue';
     }else{
         $username = $_POST['username'];
         $password = $_POST['password'];
+        $ip = $_SERVER['REMOTE_ADDR'];
 
-        $message = login($username, $password);
+        $message = login($username, $password, $ip);
         // echo $message;
     }
 ?>

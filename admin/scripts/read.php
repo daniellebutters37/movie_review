@@ -3,7 +3,7 @@
 function getAll($tbl){
     include('connect.php');
 
-    //TODO: fill the following variable with a SQL query that fetching all info from the given tbl $tbl
+    //fill the following variable with a SQL query that fetching all info from the given tbl $tbl
 
     $queryAll = 'SELECT * FROM ' .$tbl;
     $runAll = $pdo->query($queryAll);
@@ -24,7 +24,7 @@ function getSingle($tbl, $col, $value){
     if($runSingle){
         return $runSingle;
     }else{
-        $error = 'There was a problem';
+        $error = 'There was a problem!';
         return $error;
     }
 }
