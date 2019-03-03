@@ -26,14 +26,20 @@ function login($username, $password, $ip){
            //Check if password matches username
             $get_user_query = 'SELECT * FROM tbl_user WHERE user_name = :username AND user_pass = :password';
             $get_user_set = $pdo->prepare($get_user_query);
-            
             $get_user_set->execute(
                 array(
                     ':username' => $username,
-                    ':password' => $password
+                    // encrypt password from actual password
+                    ':password' => md5($password)
                 )
             );
+            
             while($found_user = $get_user_set->fetch(PDO::FETCH_ASSOC)){
+                //take the current time - the time the user was created ... if greater than 3 days, fail to login
+                if((time() - $found_user['user_time_created']) > 3 * 24 * 60 * 60 && $found_user['last_visit'] == null){
+                    return 'Account Suspened';
+                }
+
                 $id = $found_user['user_id'];
                 $_SESSION['user_id'] = $id;
                 $_SESSION['user_name'] = $found_user['user_name'];
@@ -42,7 +48,7 @@ function login($username, $password, $ip){
                 //update user login IP
                 //user_ip colum within tbl_user table
                 //Don't for get binding
-                $update_ip_query = 'UPDATE `tbl_user` SET `user_ip` = :user_ip WHERE `tbl_user`.`user_id` = :user_id';
+                $update_ip_query = 'UPDATE `tbl_user` SET `user_ip` = :user_ip, `last_visit` = '.time().' , `account_lockout` = 0 WHERE `tbl_user`.`user_id` = :user_id';
                 $update_ip_set = $pdo->prepare($update_ip_query);
                 $update_ip_set->execute(
                     array(

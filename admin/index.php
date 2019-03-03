@@ -24,7 +24,8 @@ confirm_logged_in();
             date_default_timezone_set("America/Toronto");
             echo date('m/d/Y h:i:s', $_SESSION['user_table']['last_visit']);
         } else {
-            echo "Congrats, First Login!";
+            $_SESSION['user_table']['last_visit'] = time();
+            redirect_to('admin_edituser.php');
         } 
         ?>
     </p>
@@ -52,7 +53,7 @@ confirm_logged_in();
     <nav>
         <ul>
             <li><a href="admin_createuser.php">Create User</a></li>
-            <li><a href="#">Edit User</a></li>
+            <li><a href="admin_edituser.php">Edit User</a></li>
             <li><a href="#">Delete User</a></li>
             <li><a href="scripts/caller.php?caller_id=logout">Sign Out</a></li>
         </ul>

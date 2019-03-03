@@ -8,15 +8,14 @@
         //Do some preprocess for the data. Trim means the start point. 
         $fname = trim($_POST['fname']);
         $username = trim($_POST['username']);
-        $password = trim($_POST['password']);
         $email = trim($_POST['email']);
 
         //validation ( || means or logic)
-        if(empty($username) || empty($password) || empty($email)){
+        if(empty($username) || empty($email)){
             $message = 'Please fill in the required fields';
         }else{
             $message = 'Data seems alright...';
-            $message = createUser($fname, $username, $password, $email);
+            $message = createUser($fname, $username, $email);
             
         }
     }
@@ -48,9 +47,6 @@
 
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" value=""><br><br>
-
-        <label for="password">Password:</label>
-        <input type="text" id="password" name="password" value=""><br><br>
 
         <button type="submit" name="submit">Create User</button>
     </form>
