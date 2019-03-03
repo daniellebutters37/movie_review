@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Feb 04, 2019 at 06:32 PM
+-- Generation Time: Mar 03, 2019 at 11:26 PM
 -- Server version: 5.7.23
 -- PHP Version: 7.2.8
 
@@ -1029,15 +1029,20 @@ CREATE TABLE `tbl_user` (
   `user_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `user_ip` varchar(50) NOT NULL DEFAULT 'no',
   `last_visit` varchar(12) DEFAULT NULL,
-  `account_lockout` int(11) DEFAULT NULL
+  `user_time_created` varchar(12) NOT NULL,
+  `account_lockout` int(11) DEFAULT NULL,
+  `user_access` tinyint(4) DEFAULT NULL,
+  `user_admin` tinyint(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_user`
 --
 
-INSERT INTO `tbl_user` (`user_id`, `user_fname`, `user_name`, `user_pass`, `user_email`, `user_date`, `user_ip`, `last_visit`, `account_lockout`) VALUES
-(1, '', 'admin', '1234', 'danielle@test.ca', '2019-01-22 20:38:28', 'no', '1549242828', 0);
+INSERT INTO `tbl_user` (`user_id`, `user_fname`, `user_name`, `user_pass`, `user_email`, `user_date`, `user_ip`, `last_visit`, `user_time_created`, `account_lockout`, `user_access`, `user_admin`) VALUES
+(1, 'admin', 'admin', '81dc9bdb52d04dc20036dbd8313ed055', 'danielle@test.com', '2019-01-22 20:38:28', '::1', '1551655357', '1551654256', 0, NULL, NULL),
+(7, 'Danielle', 'Danielle', '1234', 'danielle@gmail.com', '2019-02-05 22:43:04', 'no', NULL, '', 0, 5, 1),
+(10, 'Dave', 'Dave', '349108a9cc49e5e3aedbdd98ba370b2d', 'dave@gmail.com', '2019-02-09 03:36:58', 'no', NULL, '', NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -1250,7 +1255,7 @@ ALTER TABLE `tbl_urating`
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `user_id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `user_id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

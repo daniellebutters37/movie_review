@@ -1,11 +1,5 @@
-Research Assignment #1: Admin Login
+Tutorial References:
 
-http://php.net/manual/en/function.date.php
-
-http://php.net/manual/en/datetime.settimestamp.php
-
-http://php.net/manual/en/function.strtotime.php
-
-http://php.net/manual/en/language.operators.increment.php
-
-https://stackoverflow.com/questions/2182511/setting-a-greeting-based-on-users-time-good-morning-good-afternoon
+http://php.net/manual/en/pdostatement.rowcount.php
+https://stackoverflow.com/questions/7778901/how-to-calculate-the-time-difference-between-unix-time-stamps
+https://www.unixtimestamp.com/
